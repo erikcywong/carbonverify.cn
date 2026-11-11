@@ -1,0 +1,37 @@
+/* Shared English / Simplified Chinese interface copy */
+window.ZCV_SHARED={
+  strings:{
+    "Products":"产品","Solutions":"解决方案","Method":"方法与信任","Company":"公司",
+    "Verified Unit":"批次核查单元","Batch-level, evidence-graded product carbon record":"按批次建立、带证据等级的产品碳记录",
+    "EUDR / CBAM Packs":"EUDR / CBAM 清关包","Shipment evidence through forwarders and customs brokers":"通过货代与报关行交付货运证据",
+    "Timestamp Anchoring":"时间锚定","Public proof that a record existed at a stated time":"公开证明记录在某一时间已经存在",
+    "Label Performance Warranty":"标签履约保证","Financial protection if a label is later revoked":"标签日后被撤销时提供经济保障",
+    "Supplier Evidence Programmes":"供应商证据计划","Comparable scope-3 data across a supplier pool":"让整个供应商群体的范围三数据可比较",
+    "Registry as a Service":"登记册即服务","White-label public register for accredited bodies":"为持证机构提供白标公开登记册",
+    "Green Claims Assurance":"绿色声明鉴证","Audit the buyer's public claim, not only its suppliers":"审查买方自己的公开声明，而不只是供应商",
+    "Evidence Data Bureau":"证据数据征信局","Sector and origin distributions under entity separation":"在法人隔离下提供行业与产地分布数据",
+    "Autograde API":"自动分级 API","Meter-to-grade automation at ¥2–5 per batch":"从仪表到等级自动处理，每批 ¥2–5",
+    "CJV-MTH-2.0 Specification":"CJV-MTH-2.0 方法规范","Numbered rules, test vectors and challenge window":"编号规则、测试向量与公开质疑期",
+    "Public Registry":"公开登记册","Recompute records independently in your browser":"在浏览器中独立重算记录",
+    "Independence & Governance":"独立性与治理","Veto rights, conflicts, appeals and related parties":"否决权、利益冲突、申诉与关联方",
+    "Services & Fees":"服务与费用","One published schedule; no outcome fees":"统一公开价目，不收取结果挂钩费用",
+    "About & Accreditation":"关于我们与认可状态","What exists, what is pending, what we never claim":"已具备、待完成及绝不冒称的能力",
+    "Industry Chains":"行业链条","Coffee, insurance and beverage worked examples":"咖啡、保险与饮料结构示例",
+    "Platform & API":"平台与 API","Issue, read, anchor, revoke and export":"签发、读取、锚定、撤销与导出",
+    "Contact":"联系我们","Scope review, pilot and partnership enquiries":"范围评估、试点与合作咨询",
+    "Methodology & public evidence registry · Hong Kong":"公开方法规范与证据登记册 · 中国香港",
+    "Not a certification body · no certification conclusions":"并非认证机构 · 不出具认证结论",
+    "Registry":"登记册","Fees":"费用","Menu":"菜单","Open navigation":"打开导航","Close navigation":"关闭导航",
+    "Request scope review":"申请范围评估","Team":"Team","zero-carbon assurance":"零碳证据与鉴证",
+    "Product carbon evidence, shipment-grade documentation and public recomputation. Certification conclusions, where required, are signed by an appropriately accredited partner.":"产品碳证据、货运级文件与公开重算。需要认证结论时，由具备相应认可资质的伙伴签署。",
+    "Infrastructure":"基础设施","Trust":"信任","Published method":"公开方法","Independence":"独立性","Public fees":"公开费用","Developer API":"开发者 API","Performance Warranty":"履约保证",
+    "Carbon Verify is not an accredited certification body. Records, grades and assurance reports are not certification conclusions and must not be represented as regulatory approval. Related-party cases are labelled and excluded from independent validation metrics.":"Carbon Verify 不是获认可的认证机构。记录、等级与鉴证报告均非认证结论，不得表述为监管批准。关联方案例会明确标注，且不计入独立第三方验证成果。",
+    "Page guide":"页面导览","Watch this page explained":"观看本页功能讲解","A plain-language tour with professional female narration and synchronised captions. Select 普通话 to switch both the video and narration.":"通俗讲解配专业女声与同步字幕。选择“普通话”即可同时切换视频与旁白。",
+    "A plain-language tour with professional female narration and synchronised captions. Select English to switch both the video and narration.":"通俗讲解配专业女声与同步字幕。选择 English 即可同时切换视频与旁白。",
+    "Play video":"播放视频","Read transcript":"阅读讲解稿","Video transcript":"视频讲解稿","English narration":"英文女声旁白","Mandarin narration":"普通话女声旁白",
+    "First-year verification":"首年核查","Registry issuance":"登记册签发","site":"个站点","sites":"个站点","batches":"批次/年",
+    "Company: ":"公司：","Contact: ":"联系人：","Email: ":"电子邮箱：","Product: ":"咨询产品：","Shipment / supplier volume: ":"货运 / 供应商规模：","Scope and timing:":"范围与时间要求：",
+    "Scope review — ":"范围评估 — ","New enquiry":"新咨询","Your email client has opened with a pre-filled enquiry. Nothing was submitted by this website.":"已打开带有预填咨询内容的邮件客户端，本网站没有提交任何信息。",
+    "Enter a canonical payload first.":"请先输入规范化数据载荷。","Computed locally. No payload left this browser.":"已在本地计算，数据未离开此浏览器。","Secure browser context required for WebCrypto.":"WebCrypto 需要安全的浏览器环境。"
+  }
+};

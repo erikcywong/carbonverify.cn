@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.100 --> 00:00:08.381
+CJV-MTH-2.0 is a public working specification for checking carbon claims against a fixed method version.
+
+2
+00:00:08.331 --> 00:00:17.836
+It sets twelve rules covering boundaries, primary data, emission factors, evidence grades, baselines and public commitments.
+
+3
+00:00:17.836 --> 00:00:24.308
+Reviewers can reproduce calculations, test refusals and challenge results with counter-examples.
+
+4
+00:00:24.308 --> 00:00:27.615
+Each record retains the version used to produce it.
+
+5
+00:00:27.615 --> 00:00:32.355
+The method is not an accredited standard and does not confer certification.
+
+6
+00:00:32.355 --> 00:00:41.704
+Public timestamps prove integrity and timing, not whether a claim is true, while related-party records cannot establish independence.

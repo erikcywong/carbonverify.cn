@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.100 --> 00:00:05.569
+This page explains how business systems can use evidence without reading PDF files.
+
+2
+00:00:05.519 --> 00:00:16.639
+The API model lets authorised users request quotes, submit batch records, read verification status, request public time anchors and export registry information.
+
+3
+00:00:16.639 --> 00:00:22.264
+Each resource has a defined path and purpose, making integration easier to review.
+
+4
+00:00:22.264 --> 00:00:32.498
+Security is separated from access: an API key controls submission, while public commitments and timestamps let anyone check a published record.
+
+5
+00:00:32.498 --> 00:00:35.623
+Even a leaked key must not rewrite history.
+
+6
+00:00:35.623 --> 00:00:45.675
+Teams can begin with one real workflow, map identifiers and evidence gaps, and agree how failures should be handled before building an integration.

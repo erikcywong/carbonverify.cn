@@ -1,0 +1,21 @@
+WEBVTT
+
+1
+00:00:00.100 --> 00:00:07.639
+The registry lets anyone inspect evidence records and recompute a commitment locally, without relying on our server.
+
+2
+00:00:07.589 --> 00:00:16.222
+Each row shows the method version, evidence grade and status, including visible revocations and disclosed related-party cases.
+
+3
+00:00:16.222 --> 00:00:23.461
+These are demonstration records, not real certifications, customer claims or proof of commercial adoption.
+
+4
+00:00:23.461 --> 00:00:30.935
+Use the browser tool to calculate SHA-256 from a canonical payload; the input stays on your device.
+
+5
+00:00:30.935 --> 00:00:37.407
+When citing a result, record the date, record count, method version and chain head.

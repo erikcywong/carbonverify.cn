@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.100 --> 00:00:07.691
+A timestamp answers a simple but valuable question: did this exact evidence record already exist at a stated time?
+
+2
+00:00:07.641 --> 00:00:19.230
+Carbon Verify converts each record into a SHA-256 hash, groups the day's hashes into a Merkle tree, and anchors the root through a public timestamping mechanism.
+
+3
+00:00:19.230 --> 00:00:27.381
+You can export the hash, proof path, and timestamp evidence, then check them independently without an account or subscription.
+
+4
+00:00:27.381 --> 00:00:33.084
+This can support disputes, claims, customs reviews, and legal proceedings.

@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CJV-MTH-1.0 evidence archive — Carbon Verify</title><meta name="description" content="Archived CJV-MTH-1.0 specification, 20-record simulated register snapshot and dependency-free verifier."><link rel="canonical" href="https://carbonverify.cn/specification/"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/css/site.css"></head><body data-page="method"><div id="site-header"></div><main><div class="page-head"><div class="wrap"><div class="breadcrumb"><a href="/index.html">Home</a> / <a href="/methodology.html">Method</a> / V1 archive</div><div class="kicker">Method archive · ZCV-SPEC-001</div><h1>CJV-MTH-1.0 — fixed evidence archive</h1><p class="lead">Originally published as ZeroCarbon Verify, now Carbon Verify. The archived files and hashes are unchanged. Version 1.1, 2026-11-08, CC BY 4.0.</p></div></div>
+<section><div class="wrap"><div class="callout warn"><p><b>Archive boundary.</b> This is not the current CJV-MTH-2.0 working method, an accredited standard or a certification. Its 20 records are all simulated. FNV-1a resists casual modification, not an adversary who rewrites the whole chain.</p></div><div class="section-head"><div><div class="kicker">Download</div><h2>Specification, snapshot and verifier</h2></div><p>Author: Erik C. Wong · ORCID 0009-0004-6360-4415 · Original method DOI 10.5281/zenodo.24015355.</p></div><div class="table-wrap"><table><thead><tr><th>File</th><th>Contents</th><th>Integrity</th></tr></thead><tbody><tr><td><a class="text-link" href="/specification/CJV-MTH-1.0.pdf">CJV-MTH-1.0.pdf</a></td><td>Archived specification, 12 pages, 22 sections, 18 tables</td><td class="mono">cc011e7e…64d32e</td></tr><tr><td><a class="text-link" href="/specification/register-labels.json">register-labels.json</a></td><td>20 simulated records · head 54980f3d</td><td class="mono">4a4f90f1…72051d5</td></tr><tr><td><a class="text-link" href="/specification/verify_register.py">verify_register.py</a></td><td>Dependency-free payload, chain, arithmetic and grade verifier</td><td class="mono">87b78649…089ba5</td></tr></tbody></table></div><p style="margin-top:24px"><a class="text-link" href="https://doi.org/10.5281/zenodo.24015355" rel="noopener noreferrer">Original method DOI →</a> · <a class="text-link" href="/registry/">Open the v1 browser verifier →</a></p></div></section>
+<section class="wash"><div class="wrap split"><div><div class="kicker">Recompute offline</div><h2>No server or dependencies</h2><div class="codeblock">python verify_register.py register-labels.json
+
+records:         20
+declared head:   54980f3d
+recomputed head: 54980f3d
+
+OK — payload, chain, arithmetic and grades all verify</div></div><div><div class="kicker">Three test vectors</div><h2>Commit to the previous record</h2><div class="codeblock">hash = FNV1a(prev + payload)
+
+genesis + AP-8885|185.735|0.307|A
+= 889fdaf6
+
+889fdaf6 + AP-2856|295.75|0.338|B
+= f24da836
+
+f0238400 + AP-7315|224.406|0.273|A
+= 54980f3d</div><p class="note" style="margin-top:16px">For the separate research protocol, see <a class="text-link" href="https://doi.org/10.5281/zenodo.24115645" rel="noopener noreferrer">Recomputable Carbon Evidence</a> (Zenodo preprint, not peer reviewed).</p></div></div></section></main><footer id="site-footer"></footer><script src="/assets/js/i18n/shared.js"></script><script src="/assets/js/site.js"></script></body></html>

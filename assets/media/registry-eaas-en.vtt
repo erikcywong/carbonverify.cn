@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.100 --> 00:00:10.413
+Registry as a Service gives accredited bodies, associations, large buyers and platform providers a public evidence register under their own brand.
+
+2
+00:00:10.363 --> 00:00:21.313
+It uses a shared SHA-256 chain, evidence grades, timestamp anchors and revocation history, so anyone can check a record without an account.
+
+3
+00:00:21.313 --> 00:00:25.558
+APIs and exports support audits and existing systems.
+
+4
+00:00:25.558 --> 00:00:30.532
+The service does not transfer accreditation or certify tenant-supplied data.
+
+5
+00:00:30.532 --> 00:00:36.274
+Each tenant remains responsible for its own conclusions, conduct and reputation.
+
+6
+00:00:36.274 --> 00:00:44.920
+Carbon Verify provides the public evidence infrastructure, while public verification stays free and independently reproducible.
