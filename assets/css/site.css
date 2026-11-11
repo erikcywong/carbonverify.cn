@@ -49,3 +49,20 @@ footer{background:#071a35;color:#a9bfd4;padding:60px 0 30px}.footer-grid{display
 
 /* Prevent long evidence payloads from widening mobile grids. */
 .split>div{min-width:0}
+
+/* My Team: public entrance, complete private staff workspace. */
+.team-intro{padding:42px 0 36px;background:var(--wash);border-bottom:1px solid var(--line)}
+.team-intro-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:54px;align-items:end}
+.team-intro .breadcrumb{margin-bottom:16px}.team-intro .kicker{margin-bottom:14px}
+.team-intro h1{font-size:clamp(40px,4.6vw,60px);margin-bottom:14px}.team-intro .lead{font-size:16px;margin-bottom:0}
+.team-access-note{padding:22px;border:1px solid var(--line-2);border-radius:9px;background:#fff}
+.team-access-note .code{font:500 10px var(--mono);letter-spacing:.13em;color:var(--teal);margin-bottom:12px}
+.team-access-note p{font-size:12px;line-height:1.65;color:var(--muted);margin-bottom:16px}.team-access-note .btn{width:100%}
+.team-workspace{padding:0 0 54px;background:#eaf0ef;border-bottom:1px solid var(--line)}
+.team-workspace-bar{min-height:44px;max-width:1440px;margin:auto;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;color:var(--muted);font-size:11px}
+.team-workspace-bar>span:first-child{display:flex;align-items:center;gap:8px;color:var(--navy);font-weight:600;white-space:nowrap}
+.team-workspace-bar i{display:block;width:7px;height:7px;border-radius:50%;background:var(--teal-2);box-shadow:0 0 0 4px rgba(0,149,143,.1)}
+.team-frame{display:block;width:min(1440px,100%);height:max(760px,calc(100vh - 330px));min-height:760px;margin:auto;border:0;background:#f4f7f6;box-shadow:0 12px 35px rgba(0,32,91,.08)}
+.team-noscript{padding:24px;text-align:center}
+@media(max-width:1000px){.nav-team{white-space:nowrap}.team-intro-grid{grid-template-columns:1fr;gap:24px}.team-access-note{max-width:560px}.team-frame{height:780px;min-height:780px}}
+@media(max-width:700px){.team-intro{padding:34px 0 28px}.team-intro h1{font-size:42px}.team-intro .lead{font-size:15px}.team-workspace{padding-bottom:32px}.team-workspace-bar{align-items:flex-start;padding:10px 16px}.team-workspace-bar>span:last-child{display:none}.team-frame{height:760px;min-height:760px}}

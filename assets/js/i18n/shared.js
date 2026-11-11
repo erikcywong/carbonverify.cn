@@ -22,7 +22,7 @@ window.ZCV_SHARED={
     "Methodology & public evidence registry · Hong Kong":"公开方法规范与证据登记册 · 中国香港",
     "Not a certification body · no certification conclusions":"并非认证机构 · 不出具认证结论",
     "Registry":"登记册","Fees":"费用","Menu":"菜单","Open navigation":"打开导航","Close navigation":"关闭导航",
-    "Request scope review":"申请范围评估","Team":"Team","zero-carbon assurance":"零碳证据与鉴证",
+    "Request scope review":"申请范围评估","Team":"Team","My Team":"My Team","zero-carbon assurance":"零碳证据与鉴证",
     "Product carbon evidence, shipment-grade documentation and public recomputation. Certification conclusions, where required, are signed by an appropriately accredited partner.":"产品碳证据、货运级文件与公开重算。需要认证结论时，由具备相应认可资质的伙伴签署。",
     "Infrastructure":"基础设施","Trust":"信任","Published method":"公开方法","Independence":"独立性","Public fees":"公开费用","Developer API":"开发者 API","Performance Warranty":"履约保证",
     "Carbon Verify is not an accredited certification body. Records, grades and assurance reports are not certification conclusions and must not be represented as regulatory approval. Related-party cases are labelled and excluded from independent validation metrics.":"Carbon Verify 不是获认可的认证机构。记录、等级与鉴证报告均非认证结论，不得表述为监管批准。关联方案例会明确标注，且不计入独立第三方验证成果。",
