@@ -1,0 +1,5 @@
+# Preserve archived evidence byte-for-byte, including original line endings.
+/registry/labels.json -text
+/specification/register-labels.json -text
+/specification/CJV-MTH-1.0.pdf binary
+/specification/verify_register.py -text
