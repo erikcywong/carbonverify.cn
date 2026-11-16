@@ -118,6 +118,21 @@ footer p{margin-bottom:8px}
     </div>
   </div>
 
+  <div class="card" id="gs1Card" style="display:none">
+    <h2 data-i18n="gTitle">Product identifier (GS1 Digital Link)</h2>
+    <div class="hashbox" style="margin-top:0">
+      <div class="row"><span class="lbl">GTIN (01)</span><span class="val mono" id="gGtin">—</span></div>
+      <div class="row" id="gLotRow" style="display:none"><span class="lbl" data-i18n="gLot">Lot / batch (10)</span><span class="val mono" id="gLot">—</span></div>
+      <div class="row" id="gSerialRow" style="display:none"><span class="lbl" data-i18n="gSerial">Serial (21)</span><span class="val mono" id="gSerial">—</span></div>
+      <div class="row" id="gExpRow" style="display:none"><span class="lbl" data-i18n="gExp">Best before (17)</span><span class="val mono" id="gExp">—</span></div>
+      <div class="row"><span class="lbl" data-i18n="gStatus">GTIN format</span><span class="val" id="gStatus">—</span></div>
+      <div class="row"><span class="lbl" data-i18n="gPath">Digital Link (path form)</span><span class="val mono" id="gPath">—</span></div>
+      <div class="row"><span class="lbl" data-i18n="gWork">Working link (query form)</span><span class="val mono" id="gWork">—</span></div>
+    </div>
+    <button class="btn ghost" id="gCopy" style="margin-top:10px;padding:6px 14px;font-size:12.5px" data-i18n="gCopy">Copy working link</button>
+    <p class="note" data-i18n="gNote">A locator, not evidence. Identifiers sit outside the canonical payload: they cannot change the digest, the chain hash or the grade, and they never prove product identity or ownership. They exist so that a GS1 Digital Link resolver — and a future EU digital product passport — can point at this record.</p>
+  </div>
+
   <div class="card">
     <h2 data-i18n="ledgerTitle">My cup ledger</h2>
     <p class="note" data-i18n="ledgerNote">Stored only on this device. No account, no server, no payment. Personal figures are informational and are not citable external evidence.</p>
@@ -183,6 +198,14 @@ const I18N = {
     cite:"Cite the state you checked: record count, method version, chain head, and date.",
     lnkRegistry:"Public evidence registry", lnkMethod:"CJV-MTH method", lnkEudr:"EUDR / CBAM packs",
     stVerified:"RECOMPUTED — VERIFIED", stMismatch:"MISMATCH — DO NOT TRUST", stAbstain:"ABSTAIN — no unit",
+    gTitle:"Product identifier (GS1 Digital Link)",
+    gLot:"Lot / batch (10)", gSerial:"Serial (21)", gExp:"Best before (17)", gStatus:"GTIN format",
+    gOk:"length valid · mod-10 check digit valid",
+    gBad:"check digit invalid — the printed code may be mistyped; this does not affect the record",
+    gLen:"not a GTIN length (8 / 12 / 13 / 14 digits)",
+    gPath:"Digital Link (path form)", gWork:"Working link (query form)", gCopy:"Copy working link",
+    gCopied:"Copied.",
+    gNote:"A locator, not evidence. Identifiers sit outside the canonical payload: they cannot change the digest, the chain hash or the grade, and they never prove product identity or ownership. They exist so that a GS1 Digital Link resolver — and a future EU digital product passport — can point at this record.",
     pointsTitle:"Points rules",
     pointsIntro:"Points are a loyalty programme, minted for verified behaviour — never for carbon quantities — and never written into evidence records.",
     pdEarn:"<strong>Earn</strong> — +10 per verified scan; +5–15 for black coffee / oat milk / small size on the same receipt; +10 own cup; +30 for 5 scan-days in 14. One mint per record per 24 h.",
@@ -218,6 +241,14 @@ const I18N = {
     cite:"引用时请注明:记录数量、方法版本、链头与核对日期。",
     lnkRegistry:"公开证据注册表", lnkMethod:"CJV-MTH 方法", lnkEudr:"EUDR / CBAM 证据包",
     stVerified:"重算一致 — 已验证", stMismatch:"不一致 — 请勿采信", stAbstain:"ABSTAIN — 未签发",
+    gTitle:"产品标识(GS1 Digital Link)",
+    gLot:"批号 / 批次(10)", gSerial:"序列号(21)", gExp:"保质期(17)", gStatus:"GTIN 格式",
+    gOk:"位数合规 · mod-10 校验位正确",
+    gBad:"校验位不通过 — 印刷码可能抄错;不影响本记录的验证结果",
+    gLen:"不是合法 GTIN 位数(8 / 12 / 13 / 14 位)",
+    gPath:"数字链接(路径式)", gWork:"可用链接(查询式)", gCopy:"复制可用链接",
+    gCopied:"已复制。",
+    gNote:"标识只是定位符,不是证据:它不进入规范载荷,不影响摘要、链哈希或等级,也从不证明产品身份或所有权。它的作用是让 GS1 Digital Link 解析器 — 以及将来的欧盟数字产品护照 — 能够指向这条记录。",
     pointsTitle:"积分规则公示",
     pointsIntro:"积分是会员忠诚度计划,依据可验证的消费行为发放 — 与碳数量无关,且永不写入证据记录。",
     pdEarn:"<strong>获取</strong> — 每次扫码验证成功 +10;同一单点选黑咖/燕麦奶/小杯 +5~15;自带杯 +10;滚动 14 天内扫码满 5 天 +30。同一验证记录 24 小时内仅计 1 次。",
@@ -246,6 +277,73 @@ if (qs.get("demo") === "1") Object.keys(DEMO).forEach(k => { if(!qs.get(k)) qs.s
 const P = (k) => qs.get(k) || "";
 const fields = ["batch","units","unit","total","per","grade","share","boundary","method","prev","hash"];
 const complete = ["batch","total","per","grade","method","hash"].every(k => P(k));
+
+/* ---- GS1 Digital Link (AI 01 / 10 / 21 / 17) -------------------------------
+   Accepted forms:
+     path   /scan/01/<gtin>/10/<lot>/21/<serial>   (canonical; needs a resolver rule)
+     query  ?01=<gtin>&10=<lot>&21=<serial>        (works on static hosting today)
+     alias  ?gtin=<gtin>                            (convenience)
+   Discipline: AIs locate a record, they never evidence one. They are not in the
+   canonical payload, so they cannot move the digest, the chain hash or the grade.
+   -------------------------------------------------------------------------- */
+const AI = {gtin:"01", lot:"10", serial:"21", exp:"17"};
+const ai = (() => {
+  const out = {};
+  Object.keys(AI).forEach(k => { const v = qs.get(AI[k]); if (v) out[k] = v.trim(); });
+  if (!out.gtin && qs.get("gtin")) out.gtin = qs.get("gtin").trim();
+  const segs = location.pathname.split("/").filter(Boolean);
+  const i = segs.lastIndexOf("scan");
+  if (i >= 0){
+    const rest = segs.slice(i + 1);
+    for (let j = 0; j + 1 < rest.length; j += 2){
+      const k = Object.keys(AI).find(x => AI[x] === rest[j]);
+      if (k && !out[k]) out[k] = decodeURIComponent(rest[j + 1]);
+    }
+  }
+  return out;
+})();
+
+function gtinCheck(g){
+  if (!/^(?:\d{8}|\d{12,14})$/.test(g)) return "length";
+  const d = g.split("").map(Number), cd = d.pop();
+  let sum = 0;
+  d.reverse().forEach((n, idx) => { sum += n * (idx % 2 === 0 ? 3 : 1); });
+  return (10 - (sum % 10)) % 10 === cd ? "ok" : "bad";
+}
+
+let workingLink = "";
+
+function renderGs1(){
+  if (!ai.gtin && !ai.lot && !ai.serial) return;
+  document.getElementById("gs1Card").style.display = "block";
+  const put = (id, v, rowId) => {
+    if (!v) return;
+    setText(id, v);
+    if (rowId) document.getElementById(rowId).style.display = "flex";
+  };
+  setText("gGtin", ai.gtin || "—");
+  put("gLot", ai.lot, "gLotRow");
+  put("gSerial", ai.serial, "gSerialRow");
+  put("gExp", ai.exp, "gExpRow");
+
+  const st = ai.gtin ? gtinCheck(ai.gtin) : null;
+  const stEl = document.getElementById("gStatus");
+  const stKey = {ok:"gOk", bad:"gBad", length:"gLen"}[st];
+  if (stKey){ stEl.className = "val " + (st === "ok" ? "match" : "diff"); stEl.textContent = T(stKey); }
+  else { stEl.className = "val"; stEl.textContent = "—"; }
+
+  const parts = [];
+  ["gtin","lot","serial","exp"].forEach(k => { if (ai[k]) parts.push(AI[k] + "/" + encodeURIComponent(ai[k])); });
+  setText("gPath", parts.length ? "https://carbonverify.cn/scan/" + parts.join("/") : "—");
+
+  const work = new URLSearchParams();
+  ["gtin","lot","serial","exp"].forEach(k => { if (ai[k]) work.set(AI[k], ai[k]); });
+  ["batch","units","unit","total","per","grade","share","boundary","method","prev","hash","rp","revoked","reason"]
+    .forEach(k => { const v = qs.get(k); if (v) work.set(k, v); });
+  workingLink = "https://carbonverify.cn/scan/?" + work.toString();
+  setText("gWork", workingLink);
+}
+
 
 async function sha256Hex(text){
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
@@ -393,7 +491,7 @@ function setLang(l){
   lang = l;
   document.documentElement.dataset.lang = l;
   localStorage.setItem("cv_scan_lang", l);
-  renderStatic(); renderLedger();
+  renderStatic(); renderLedger(); renderGs1();
 }
 
 document.getElementById("langBtn").addEventListener("click", () => setLang(lang === "en" ? "zh" : "en"));
@@ -408,6 +506,20 @@ document.getElementById("addBtn").addEventListener("click", () => {
 document.getElementById("clearBtn").addEventListener("click", () => {
   localStorage.removeItem(LEDGER_KEY);
   renderLedger();
+});
+document.getElementById("gCopy").addEventListener("click", async () => {
+  if (!workingLink) return;
+  const btn = document.getElementById("gCopy");
+  const orig = I18N[lang].gCopy;
+  try {
+    await navigator.clipboard.writeText(workingLink);
+  } catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = workingLink; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); ta.remove();
+  }
+  btn.textContent = I18N[lang].gCopied;
+  setTimeout(() => { btn.textContent = I18N[lang].gCopy; }, 1600);
 });
 
 setLang(lang);
