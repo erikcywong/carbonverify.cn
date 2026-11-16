@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scan · Carbon Verify — evidence for this cup</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#000;--card:#16181c;--card2:#1c1f23;--border:#2f3336;--text:#e7e9ea;--muted:#71767b;--accent:#1d9bf0;--ok:#00ba7c;--bad:#f4212e;--warn:#ffd400;--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;font-size:15px}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{max-width:680px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:700;color:var(--text);font-size:16px}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:18px;font-size:13.5px}
+.lang-btn{background:none;border:1px solid var(--border);color:var(--muted);border-radius:9999px;padding:4px 12px;cursor:pointer;font-size:12.5px}
+.lang-btn:hover{border-color:var(--accent);color:var(--text)}
+main{max-width:680px;margin:0 auto;padding:24px 20px 64px}
+h1{font-size:22px;font-weight:700;margin:8px 0 4px}
+.sub{color:var(--muted);font-size:14px;margin-bottom:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.card h2{font-size:16px;font-weight:700;margin-bottom:12px}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:9999px;padding:8px 16px;font-weight:700;font-size:15px}
+.pill-ok{background:rgba(0,186,124,.12);color:var(--ok);border:1px solid rgba(0,186,124,.4)}
+.pill-bad{background:rgba(244,33,46,.12);color:var(--bad);border:1px solid rgba(244,33,46,.4)}
+.pill-warn{background:rgba(255,212,0,.1);color:var(--warn);border:1px solid rgba(255,212,0,.35)}
+.dot{width:9px;height:9px;border-radius:50%;background:currentColor}
+.grade{font-size:44px;font-weight:800;line-height:1}
+.grade-a{color:var(--ok)}.grade-b{color:var(--accent)}.grade-c{color:var(--warn)}.grade-u{color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kv{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:10px 12px}
+.kv .k{color:var(--muted);font-size:12px}
+.kv .v{font-size:14.5px;font-weight:600;margin-top:2px;word-break:break-all}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+.hashbox{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:12px;margin-top:10px}
+.hashbox .row{display:flex;gap:8px;align-items:baseline;margin:4px 0}
+.hashbox .lbl{color:var(--muted);font-size:11.5px;min-width:110px;flex-shrink:0}
+.hashbox .val{word-break:break-all}
+.match{color:var(--ok);font-weight:700}
+.diff{color:var(--bad);font-weight:700}
+.banner{border:1px solid var(--border);border-left:3px solid var(--warn);background:var(--card2);border-radius:12px;padding:12px 14px;font-size:13.5px;margin-bottom:16px;color:var(--text)}
+.banner.rp{border-left-color:var(--accent)}
+.note{color:var(--muted);font-size:13px;margin-top:8px}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:9999px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer}
+.btn:hover{opacity:.9}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.ledger-item{display:flex;justify-content:space-between;align-items:center;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-top:8px;font-size:13.5px}
+.ledger-item .mono{color:var(--muted)}
+.total{font-size:20px;font-weight:800;color:var(--accent)}
+footer{border-top:1px solid var(--border);margin-top:8px;padding-top:16px;color:var(--muted);font-size:12.5px}
+footer p{margin-bottom:8px}
+.empty{color:var(--muted);font-size:13.5px;padding:8px 0}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">Carbon<span>Verify</span> · 零碳核云</div>
+    <div class="nav-links">
+      <a href="https://carbonverify.cn/registry.html" data-i18n="navRegistry">Registry</a>
+      <a href="https://carbonverify.cn/methodology.html" data-i18n="navMethod">Method</a>
+      <button class="lang-btn" id="langBtn">中文</button>
+    </div>
+  </div>
+</header>
+<main>
+  <h1 data-i18n="title">Evidence for this cup</h1>
+  <p class="sub" data-i18n="subtitle">Scan-to-verify · no account · no payment · recompute it yourself</p>
+
+  <div id="rpBanner" class="banner rp" style="display:none" data-i18n="rpBanner">
+    Related-party disclosure: this batch's holder is affiliated with the platform operator. It demonstrates interoperability, not independent validation.
+  </div>
+  <div id="revokedBanner" class="banner" style="display:none">
+    <strong data-i18n="revokedTitle">REVOKED</strong> — <span id="revokedReason"></span>
+    <span data-i18n="revokedNote"> The original commitment remains visible. History is never rewritten.</span>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="verificationTitle">Verification result</h2>
+    <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+      <div>
+        <div class="grade" id="gradeBig">—</div>
+        <div class="note" data-i18n="gradeLabel">evidence grade</div>
+      </div>
+      <div>
+        <div id="statusPill" class="pill pill-warn"><span class="dot"></span><span data-i18n="checking">checking locally…</span></div>
+        <div class="note mono" id="canonShort"></div>
+      </div>
+    </div>
+    <p class="note" id="abstainNote" style="display:none" data-i18n="abstain">
+      Insufficient evidence produces no unit and a written reason — never a softer conclusion. If you reached this page without complete record fields, the issuance was withheld (ABSTAIN) or the link is malformed.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="recordTitle">The record</h2>
+    <div class="grid">
+      <div class="kv"><div class="k" data-i18n="fBatch">Batch</div><div class="v mono" id="fBatch">—</div></div>
+      <div class="kv"><div class="k" data-i18n="fUnit">Functional unit</div><div class="v" id="fUnit">—</div></div>
+      <div class="kv"><div class="k" data-i18n="fBoundary">Boundary</div><div class="v" id="fBoundary">—</div></div>
+      <div class="kv"><div class="k" data-i18n="fFootprint">Footprint</div><div class="v" id="fFootprint">—</div></div>
+      <div class="kv"><div class="k" data-i18n="fShare">Metred share</div><div class="v" id="fShare">—</div></div>
+      <div class="kv"><div class="k" data-i18n="fMethod">Method</div><div class="v mono" id="fMethod">—</div></div>
+    </div>
+    <div class="hashbox">
+      <div class="row"><span class="lbl" data-i18n="hCanonical">Canonical payload</span><span class="val mono" id="hCanonical">—</span></div>
+      <div class="row"><span class="lbl">SHA-256(canonical)</span><span class="val mono" id="hDigest">—</span></div>
+      <div class="row"><span class="lbl" data-i18n="hExpected">Recomputed record</span><span class="val mono" id="hExpected">—</span></div>
+      <div class="row"><span class="lbl" data-i18n="hDeclared">Declared record</span><span class="val mono" id="hDeclared">—</span></div>
+      <div class="note" data-i18n="chainNote">record = SHA-256(prev_hash ‖ SHA-256(canonical)). This computation runs in your browser (WebCrypto). Nothing is transmitted; verification does not require trusting our server.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="ledgerTitle">My cup ledger</h2>
+    <p class="note" data-i18n="ledgerNote">Stored only on this device. No account, no server, no payment. Personal figures are informational and are not citable external evidence.</p>
+    <div style="display:flex;gap:10px;align-items:center;margin:12px 0;flex-wrap:wrap">
+      <button class="btn" id="addBtn" data-i18n="addBtn">Add this cup</button>
+      <button class="btn ghost" id="clearBtn" data-i18n="clearBtn">Clear ledger</button>
+      <div style="margin-left:auto"><span data-i18n="ledgerTotal">Total</span>: <span class="total" id="ledgerTotal">—</span></div>
+    </div>
+    <div id="ledgerList"><p class="empty" data-i18n="ledgerEmpty">No cups recorded yet.</p></div>
+    <p class="note" data-i18n="ledgerCompare">Comparisons are shown within the same method version only. Grades attach to batches, never to a company or a person.</p>
+  </div>
+
+  <div class="card" style="border-color:rgba(255,212,0,.3)">
+    <h2 data-i18n="notTitle">What this is not</h2>
+    <p class="note" data-i18n="notBody">
+      This record is evidence, not an offset, credit or traded instrument. It is not a certification conclusion, not regulatory approval, and not proof that a product or company is "zero carbon". It is not accredited by HKAS, CNAS, IAF or APAC. A regulated certification conclusion can only come from an appropriately accredited partner. Self-declared (grade U) records are entry records only — not verified, not externally citable.
+    </p>
+  </div>
+
+  <footer>
+    <p data-i18n="cite">Cite the state you checked: record count, method version, chain head, and date.</p>
+    <p><a href="https://carbonverify.cn/registry.html" data-i18n="lnkRegistry">Public evidence registry</a> · <a href="https://carbonverify.cn/methodology.html" data-i18n="lnkMethod">CJV-MTH method</a> · <a href="https://carbonverify.cn/eudr.html" data-i18n="lnkEudr">EUDR / CBAM packs</a></p>
+    <p>© 2026 ZeroCarbon Verify (HK). Evidence infrastructure — not a certification body.</p>
+  </footer>
+</main>
+
+<script>
+"use strict";
+const I18N = {
+  en: {
+    navRegistry:"Registry", navMethod:"Method",
+    title:"Evidence for this cup", subtitle:"Scan-to-verify · no account · no payment · recompute it yourself",
+    rpBanner:"Related-party disclosure: this batch's holder is affiliated with the platform operator. It demonstrates interoperability, not independent validation.",
+    revokedTitle:"REVOKED", revokedNote:"The original commitment remains visible. History is never rewritten.",
+    verificationTitle:"Verification result", gradeLabel:"evidence grade", checking:"checking locally…",
+    abstain:"Insufficient evidence produces no unit and a written reason — never a softer conclusion. An incomplete record on this page means issuance was withheld (ABSTAIN) or the link is malformed.",
+    recordTitle:"The record", fBatch:"Batch", fUnit:"Functional unit", fBoundary:"Boundary",
+    fFootprint:"Footprint", fShare:"Metred share", fMethod:"Method",
+    hCanonical:"Canonical payload", hExpected:"Recomputed record", hDeclared:"Declared record",
+    chainNote:"record = SHA-256(prev_hash ‖ SHA-256(canonical)). This computation runs in your browser (WebCrypto). Nothing is transmitted; verification does not require trusting our server.",
+    ledgerTitle:"My cup ledger",
+    ledgerNote:"Stored only on this device. No account, no server, no payment. Personal figures are informational and are not citable external evidence.",
+    addBtn:"Add this cup", clearBtn:"Clear ledger", ledgerTotal:"Total", ledgerEmpty:"No cups recorded yet.",
+    ledgerCompare:"Comparisons are shown within the same method version only. Grades attach to batches, never to a company or a person.",
+    notTitle:"What this is not",
+    notBody:"This record is evidence, not an offset, credit or traded instrument. It is not a certification conclusion, not regulatory approval, and not proof that a product or company is \u201czero carbon\u201d. It is not accredited by HKAS, CNAS, IAF or APAC. A regulated certification conclusion can only come from an appropriately accredited partner. Self-declared (grade U) records are entry records only — not verified, not externally citable.",
+    cite:"Cite the state you checked: record count, method version, chain head, and date.",
+    lnkRegistry:"Public evidence registry", lnkMethod:"CJV-MTH method", lnkEudr:"EUDR / CBAM packs",
+    stVerified:"RECOMPUTED — VERIFIED", stMismatch:"MISMATCH — DO NOT TRUST", stAbstain:"ABSTAIN — no unit",
+    cups:"cups", added:"Added to your ledger.", cleared:"Ledger cleared."
+  },
+  zh: {
+    navRegistry:"公开注册表", navMethod:"方法规范",
+    title:"这一杯的证据", subtitle:"扫码即验证 · 无需账户 · 永不收费 · 自己复算",
+    rpBanner:"关联方披露:该批次持有方与平台运营方存在关联。此记录用于演示互操作性,不构成独立验证。",
+    revokedTitle:"已撤销", revokedNote:"原始承诺保持公开可见。历史永不改写。",
+    verificationTitle:"验证结果", gradeLabel:"证据等级", checking:"本地计算中…",
+    abstain:"证据不足时,产出为零并附书面理由 — 绝不出具更宽松的结论。本页记录字段不完整,说明签发被保留(ABSTAIN)或链接不完整。",
+    recordTitle:"记录内容", fBatch:"批次", fUnit:"功能单位", fBoundary:"边界",
+    fFootprint:"碳足迹", fShare:"实测占比", fMethod:"方法版本",
+    hCanonical:"规范载荷", hExpected:"重算记录哈希", hDeclared:"声明记录哈希",
+    chainNote:"record = SHA-256(prev_hash ‖ SHA-256(canonical))。全部计算在您的浏览器内完成(WebCrypto),不传输任何数据 — 验证无需信任我们的服务器。",
+    ledgerTitle:"我的咖啡账本",
+    ledgerNote:"仅保存在本设备。无账户、无服务器、无收费。个人数字仅供参考,不构成可对外引用的证据。",
+    addBtn:"记录这一杯", clearBtn:"清空账本", ledgerTotal:"累计", ledgerEmpty:"还没有记录。",
+    ledgerCompare:"比较仅在相同方法版本内进行。等级属于批次,不属于任何公司或个人。",
+    notTitle:"这不是什么",
+    notBody:"本记录是证据,不是碳抵消、碳信用或交易工具;不是认证结论,不是监管批准,也不能证明产品或公司“零碳”;未获 HKAS、CNAS、IAF、APAC 认可。受监管的认证结论只能由具备相应资质的伙伴出具。自declared(U级)记录仅为入口记录 — 未经验证,不可对外引用。",
+    cite:"引用时请注明:记录数量、方法版本、链头与核对日期。",
+    lnkRegistry:"公开证据注册表", lnkMethod:"CJV-MTH 方法", lnkEudr:"EUDR / CBAM 证据包",
+    stVerified:"重算一致 — 已验证", stMismatch:"不一致 — 请勿采信", stAbstain:"ABSTAIN — 未签发",
+    cups:"杯", added:"已加入账本。", cleared:"账本已清空。"
+  }
+};
+const LEDGER_KEY = "cv_cup_ledger_v1";
+const DEMO = {batch:"SHOP-T-1116-A", units:"240", unit:"cup",
+  total:"74.4", per:"0.31", grade:"A", share:"71.2", boundary:"cradle-to-gate",
+  method:"CJV-MTH-2.0", prev:"genesis",
+  hash:"c513e065970eb524a32bf0f7ba1c9ad4253c2036109c053e8fbe3bfb64b82c99"};
+
+const qs = new URLSearchParams(location.search);
+if (qs.get("demo") === "1") Object.keys(DEMO).forEach(k => { if(!qs.get(k)) qs.set(k, DEMO[k]); });
+
+const P = (k) => qs.get(k) || "";
+const fields = ["batch","units","unit","total","per","grade","share","boundary","method","prev","hash"];
+const complete = ["batch","total","per","grade","method","hash"].every(k => P(k));
+
+async function sha256Hex(text){
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
+}
+
+function setText(id, v){ document.getElementById(id).textContent = v; }
+function pill(cls, key){
+  const el = document.getElementById("statusPill");
+  el.className = "pill " + cls;
+  el.innerHTML = '<span class="dot"></span><span>' + I18N[lang][key] + "</span>";
+}
+
+function renderStatic(){
+  const lang = document.documentElement.dataset.lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = I18N[lang][el.dataset.i18n]; if (v) el.textContent = v;
+  });
+  document.getElementById("langBtn").textContent = lang === "en" ? "中文" : "English";
+}
+
+function renderRecord(){
+  setText("fBatch", P("batch") || "—");
+  setText("fUnit", "kgCO₂e / " + (P("unit") || "unit"));
+  setText("fBoundary", P("boundary") || "—");
+  setText("fFootprint", P("per") ? P("per") + " kgCO₂e per " + (P("unit")||"unit") + "  (" + (P("total")||"?") + " total" + (P("units") ? ", " + P("units") + " " + (P("unit")||"units") : "") + ")" : "—");
+  setText("fShare", P("share") ? P("share") + "%" : "—");
+  setText("fMethod", P("method") || "—");
+  const g = P("grade");
+  const gEl = document.getElementById("gradeBig");
+  gEl.textContent = g || "—";
+  gEl.className = "grade grade-" + (g||"u").toLowerCase();
+}
+
+function renderBanner(){
+  document.getElementById("rpBanner").style.display = qs.get("rp") === "1" ? "block" : "none";
+  if (qs.get("revoked") === "1"){
+    document.getElementById("revokedBanner").style.display = "block";
+    setText("revokedReason", P("reason") || "");
+  }
+}
+
+async function verify(){
+  const canonical = [P("batch"), P("total"), P("per"), P("grade"), P("method")].join("|");
+  setText("hCanonical", canonical);
+  setText("canonShort", canonical);
+  setText("hDeclared", P("hash") || "—");
+  if (!complete){
+    document.getElementById("abstainNote").style.display = "block";
+    pill("pill-warn", "stAbstain");
+    setText("hDigest","—"); setText("hExpected","—");
+    return;
+  }
+  const digest = await sha256Hex(canonical);
+  setText("hDigest", digest);
+  const prev = P("prev") || "genesis";
+  const expected = await sha256Hex(prev + digest);
+  setText("hExpected", expected);
+  const ok = expected === P("hash");
+  pill(ok ? "pill-ok" : "pill-bad", ok ? "stVerified" : "stMismatch");
+}
+
+function gradeBadge(g){
+  const cls = {A:"pill-ok",B:"pill-ok",C:"pill-warn",U:"pill-warn"}[g] || "pill-warn";
+  return '<span class="pill ' + cls + '" style="font-size:12px;padding:2px 10px">' + g + "</span>";
+}
+
+function renderLedger(){
+  let items = [];
+  try { items = JSON.parse(localStorage.getItem(LEDGER_KEY) || "[]"); } catch(e){}
+  const list = document.getElementById("ledgerList");
+  if (!items.length){
+    list.innerHTML = '<p class="empty">' + I18N[lang].ledgerEmpty + "</p>";
+    setText("ledgerTotal", "—");
+    return;
+  }
+  const total = items.reduce((s, it) => s + Number(it.per || 0), 0);
+  setText("ledgerTotal", total.toFixed(2) + " kgCO₂e / " + items.length + " " + I18N[lang].cups);
+  list.innerHTML = items.slice().reverse().map(it =>
+    '<div class="ledger-item"><span>' + new Date(it.ts).toLocaleString() +
+    ' · <span class="mono">' + it.batch + "</span></span>" +
+    '<span><span class="mono">' + it.per + ' kgCO₂e</span> ' + gradeBadge(it.grade) + "</span></div>"
+  ).join("");
+}
+
+let lang = localStorage.getItem("cv_scan_lang") || "en";
+function setLang(l){
+  lang = l;
+  document.documentElement.dataset.lang = l;
+  localStorage.setItem("cv_scan_lang", l);
+  renderStatic(); renderLedger();
+}
+
+document.getElementById("langBtn").addEventListener("click", () => setLang(lang === "en" ? "zh" : "en"));
+document.getElementById("addBtn").addEventListener("click", () => {
+  if (!complete) return;
+  let items = [];
+  try { items = JSON.parse(localStorage.getItem(LEDGER_KEY) || "[]"); } catch(e){}
+  items.push({ts: Date.now(), batch: P("batch"), per: P("per"), grade: P("grade"), method: P("method")});
+  localStorage.setItem(LEDGER_KEY, JSON.stringify(items));
+  renderLedger();
+});
+document.getElementById("clearBtn").addEventListener("click", () => {
+  localStorage.removeItem(LEDGER_KEY);
+  renderLedger();
+});
+
+setLang(lang);
+renderRecord();
+renderBanner();
+verify();
+</script>
+</body>
+</html>
